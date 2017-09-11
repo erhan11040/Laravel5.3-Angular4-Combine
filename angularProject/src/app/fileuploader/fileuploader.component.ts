@@ -26,17 +26,17 @@ export class FileuploaderComponent implements OnInit {
   		let formData = new FormData();
   		formData.append("file",elem.files[0]);
 
-      this.http.post('http://localhost/blog/public/api',formData).subscribe(
-        (data) => 
-        { 
+      this.http.post('http://localhost/angular4Laravel/blog/public/api',formData).subscribe(
+        (data) =>
+        {
           let galleryJson = data.json() ;
           this.gallery.showGallery();
-          console.log('Got some data from backend ',data); 
-        } , 
-        (error) => 
+          console.log('Got some data from backend ',data);
+        } ,
+        (error) =>
         { console.log("error",error); })
       }
   	}
-  
+
 
 }
