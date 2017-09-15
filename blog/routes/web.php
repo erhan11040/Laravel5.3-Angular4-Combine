@@ -14,4 +14,5 @@ use Illuminate\Http\Middleware\Cors;
 Route::get('/{any?}', function () {
     return View('welcome');
 });
+
 Route::any('api','api@index')->middleware("cors");

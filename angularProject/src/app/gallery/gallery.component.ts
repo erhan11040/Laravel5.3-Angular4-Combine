@@ -6,15 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gallery.component.css']
 })
 export class GalleryComponent implements OnInit {
-  amIVisible = false;
+  amIVisible: boolean = false;
+  pictureId: string ="blank";
   constructor() { }
 
   ngOnInit() {
   }
-  showGallery()
+  showGallery(pictureId: string)
   {
 
   	this.amIVisible = true;
+    this.pictureId=pictureId;
   }
 
 }

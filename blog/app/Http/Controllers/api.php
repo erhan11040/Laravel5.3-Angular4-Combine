@@ -11,12 +11,13 @@ class api extends Controller
 
         //$contents = Storage::get('resim.jpg');
 
- 		if ($request->hasFile('file')) 
+ 		if ($request->hasFile('file'))
  		{
  			$file=$request->file('file');
     		//echo  $file;
-            $path = $request->file('file')->storeAs('avatars', "resim.jpg");
-            return response()->json(array("asd"=>$file->path()));
+            //$path = $request->file('file')->storeAs('avatars', "resim.jpg");
+            Storage::disk('uploads')->putFileAs('userName', $request->file('file') , "resim.jpg");
+            return response()->json(array("path"=>"http://localhost/angular4Laravel/blog/public/img/uploads/userName/resim.jpg"));
             //Storage::delete('file.jpg');
             //$exists = Storage::disk('s3')->exists('file.jpg');
             //$contents = Storage::get('file.jpg');
@@ -25,6 +26,8 @@ class api extends Controller
 		}
 		else
 			echo "there is no file";
+      //echo "<img src=http://localhost/angular4Laravel/blog/public/storage/app/avatars/resim.jpg />";
+      echo "<img src=".asset("storage/app/avatars/resim.jpg")." />" ;
     	//return view("api",array("file" => $file));
-    }	
+    }
 }
